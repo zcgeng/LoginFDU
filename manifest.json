@@ -1,6 +1,6 @@
 ﻿{  
 	"name": "LoginFDU",  
-	"version": "0.9.1",  
+	"version": "0.9.2",  
 	"manifest_version": 2,
 	"description": "一个很无聊的用来自动登录复旦UIS的小插件，还有保持elearning在线状态不退出的附加功能",  
 	"browser_action": {  
@@ -12,7 +12,7 @@
 		"scripts": ["background.js"]
 	},
 	"content_scripts": [{
-		"matches": ["*://*.fudan.edu.cn/amserver/UI/Login*"],
+		"matches": ["*://*.fudan.edu.cn/amserver/UI/Login*","*://uis.fudan.edu.cn/authserver/login*"],
 		"js": ["loginFDU.js"]
     }, {
 		"matches": ["*://elearning.fudan.edu.cn/*"],
