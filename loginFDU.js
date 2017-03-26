@@ -8,14 +8,23 @@ function loginFDU(){
 			alert("LoginFDU: 请在右上角设置学号和密码");
 			return;
 		}
-		document.getElementById("username").value = response.name;
-		document.getElementById("password").value = response.pswd;
+		if(document.getElementById("IDToken1") != null){
+			document.getElementById("IDToken1").value = response.name;
+			document.getElementById("IDToken2").value = response.pswd;
+			if(document.getElementById("inputCode")!=null){
+				doNotRun = true;
+				alert("LoginFDU: 出现了验证码,请检查是否设置正确");
+				return;
+			}
+			setTimeout(function(){
+				if(doNotRun)return; 
+				location.href = "javascript:defaultSubmit();";
+			}, 100);
+		}
+		else{
+			document.getElementById("username").value = response.name;
+			document.getElementById("password").value = response.pswd;
+		}
 	});
-	if(document.getElementById("inputCode")!=null){
-		doNotRun = true;
-		alert("LoginFDU: 出现了验证码,请检查是否设置正确");
-		return;
-	}
 }
-
 loginFDU();
